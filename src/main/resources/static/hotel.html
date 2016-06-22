@@ -1,0 +1,44 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hoteis</title>
+     
+    <script src="/js/jquery-1.11.0.min.js"></script>
+    <script src="/js/geral.js"></script>
+    <script src="/js/jquery.mobile-1.4.1.min.js"></script>
+	     
+	<script src="/js/angular.min.js"></script>
+	<script src="/js/angular-resource.min.js"></script>
+	
+    <script src="/js/app.js"></script>
+    
+    <link rel="stylesheet"  href="/css/jquery.mobile-1.4.1.min.css" /> 
+</head>
+<body>
+
+	<div data-role="page" ng-controller="HotelListController">
+        <div data-role="header">
+        	<h1>Hoteis</h1>        	
+        </div>
+        <div data-role="content" >
+        	<a href="hotel-form.html" data-role="button">Novo Hotel</a>
+        	
+        	<ul data-role="listview" data-inset="true">
+				<li ng-repeat="hotel in hoteis">
+					<a href="hotel-show.html?id={{hotel.id}}">{{hotel.nome}}</a>
+				</li>
+			</ul>
+		</div>
+        <div data-role="footer" data-position="fixed">
+        	<h4>Rodapé</h4>
+        </div>        	
+	</div>
+	
+
+</body>
+</html>
+
+
+

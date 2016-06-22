@@ -1,0 +1,85 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hotel</title>
+     
+    <script src="/js/jquery-1.11.0.min.js"></script>
+    <script src="/js/geral.js"></script>
+    <script src="/js/jquery.mobile-1.4.1.min.js"></script>
+	     
+	<script src="/js/angular.min.js"></script>
+	<script src="/js/angular-resource.min.js"></script>
+	
+    <script src="/js/app.js"></script>
+    
+    <link rel="stylesheet"  href="/css/jquery.mobile-1.4.1.min.css" /> 
+</head>
+<body>
+	<div ng-controller="HotelShowController">
+		<div data-role="page" >
+	        <div data-role="header">
+	        	<h1>Hotel</h1>
+	        </div>
+	        <div data-role="content">
+	            <ul data-role="listview" data-inset="true">
+	                <li data-role="list-divider">{{hotel.nome}}</li>
+	                <li>
+	                    <div>{{hotel.descricao}}</div>
+	                </li>
+	                <li>
+	                    <div>Endereço: {{hotel.endereco}}</div>
+	                </li>	                
+	                <li>
+	                    <div>Vagas Disponíveis: {{hotel.vagasDisponiveis}}</div>
+	                </li>	                	                
+	            </ul>
+	            
+	            <ul data-role="listview" data-inset="true">
+	                <li data-role="list-divider">Reservas</li>
+	                <li ng-repeat="reserva in hotel.reservas">
+	                    <div>Nome: {{reserva.nome}}</div>
+	                    <div>Data: {{reserva.data}}</div>
+	                    <div>
+	            			<a href="#" data-role="button" ng-click="cancelarReserva(reserva)" >Cancelar</a>	                    
+	                    </div>
+	                </li>       
+	            </ul>	                    
+	            
+	            <a href="#modal-reserva" data-role="button" ng-show="hotel.vagasDisponiveis > 0"
+	            	data-inline="true"  data-rel="dialog" data-transition="pop" >Reservar</a>            
+	            
+            
+	        </div>
+	        <div data-role="footer" data-position="fixed">
+	        	<h4>Rodapé</h4>
+	        </div>
+	    </div>	
+	    
+	    
+		<div id="modal-reserva" data-role="page">
+	        <div data-role="header">
+	        	<h1>Nova Rserva</h1>
+	        </div>
+	        <div data-role="content">
+				<div class="ui-body">
+	                <div data-role="fieldcontain">
+						<label for="txtNome">Nome:</label>
+						<input type="text" id="txtNome" ng-model="reserva.nome" />
+	                </div>
+	                <div data-role="fieldcontain">
+						<label for="txtData">Data:</label>
+						<input type="text" id="txtData" ng-model="reserva.data" />
+	                </div>                 
+	                <button ng-click="saveReserva()">Salvar</button>              				
+				</div>        
+	        
+	        </div>
+	    </div> 	    
+	    
+
+    </div>
+
+</body>
+</html>
